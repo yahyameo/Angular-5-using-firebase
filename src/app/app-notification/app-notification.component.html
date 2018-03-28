@@ -1,0 +1,29 @@
+<h2>Add new content</h2>
+
+<form [formGroup]="frmAddEditApp" (submit)="addAppContent()">
+  <div class="form-group">
+    <label for="app">App(s)</label>
+    <select  formControlName="appID"  class="form-control" id="app">
+      <option  selected="selected" *ngFor="let item of appsList | async" value={{item.id}}>{{item.title}}</option>
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <label for="Title">Title</label>
+    <input  type="text" class="form-control" formControlName="title" id="Title" placeholder="Title">
+    <div *ngIf="title.touched && title.invalid" class="alert alert-danger">
+      Please enter content title.
+    </div>
+  </div>
+   <div class="form-group">
+    <label for="Content Icon">Content Icon url</label>
+    <input  type="text" class="form-control" formControlName="imageUrl" id="Content Icon">
+  
+  </div>
+  <div class="form-group">
+    <label for="description">Content</label>
+    <div  formControlName="content" [froalaEditor]>Hello, Froala!</div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

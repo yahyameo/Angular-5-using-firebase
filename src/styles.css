@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+body{
+    margin:5px;
+}
+
+.loginScreen{
+    margin-top: 73px;
+    width: 29%;
+    float: left;
+    margin-left: 30%;
+}

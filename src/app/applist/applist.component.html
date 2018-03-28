@@ -1,0 +1,62 @@
+<h2>App list</h2>
+ <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Category</th>
+        <th scope="col">Android users</th>
+        <th scope="col">Ios users</th>
+        <!-- <th scope="col">Rating(5)</th> -->
+        <th scope="col">CreatedDate</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of appsList | async;index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{item.title}}</td>
+        <td>{{item.category}}</td>
+        <td *ngIf="item && item.users" >{{item.users}}</td>
+        <td *ngIf="!item || !item.users" >25</td>
+        <td *ngIf="!item || !item.users" >40</td>
+        <!-- <td *ngIf="!item || !item.users" >3.9</td> -->
+        <td>{{formateDate(item.createdDate)}}</td>
+        <td>
+          <a (click)="setValueToEdit(item)" [routerLink]="['/edit',item.id]" class="inline-block" title="Edit App">
+          <!-- Edit -->
+          <i class="material-icons">mode_edit</i>
+        </a> 
+          <a class="nav-link" routerLink="/notification" class="inline-block" title="Add new content">
+            <!-- Add content -->
+            <i class="material-icons">add_circle</i>
+          </a>
+        </td>
+        
+      </tr>
+      <!-- <tr *ngFor="let item of items | async let i=index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{item.title}}</td>
+          <td>{{item.Category}}</td>
+          <td *ngIf="item && item.users" >{{item.users}}</td>
+          <td *ngIf="!item || !item.users" >25</td>
+          <td *ngIf="!item || !item.users" >40</td>
+          <td *ngIf="!item || !item.users" >3.9</td>
+          <td>{{formateDate(item.createdDate)}}</td>
+          <td>
+            <a [routerLink]="['/edit',item._id]"
+            >Edit</a>
+          </td>
+        </tr> -->
+    </tbody>
+  </table> 
+
+  <!-- <ul>
+    <li class="text" *ngFor="let item of items | async">
+      {{item | json}}
+      
+      androidUser: {{getSum(item.androidUser)}} 
+      | iosUser: {{getSum(item.iosUser)}}
+      | averageRating: {{getAverageRating(item.rating)}}
+    </li>
+  </ul> -->
